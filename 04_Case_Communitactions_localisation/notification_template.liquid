@@ -1,0 +1,28 @@
+{% comment %}
+First we are going to capture the user's language and assign it to a variable
+The variable name is user_language
+We use custom_attribute.language to capture the user language
+If the language is not specified we will use as default Es = Spanish
+{% endcomment %}
+{% assign user_language = custom_attribute.language | default: 'es' %}
+
+{% comment %}
+We will use 'if-elseif-endif' condition to evaluate the user language
+If the user language = 'Spanish' we will send the message in Spanish
+If the user language = 'English' we will send the message in English
+{% endcomment %}
+{% if user_language == 'es' %}
+  ¡Hola {{${first_name} | default: ''}}! aquí tienes los mejores descuentos en {{${city} | default: 'tu zona'}}.
+   Disfruta a lo grande desde casa, pagando menos. Pide un Glovo
+{% elsif user_language == 'en' %}
+  Hello {{${first_name} | default: ''}}! here you have the best discounts in {{${city} | default: 'your area'}}.
+   Enjoy a great time from home, paying less. Order a Glovo
+{% endif %}
+
+{% comment %}
+Furthermore, we will use the tag {first_name} to personalize the email.
+If first_name doesn´t exist we will use as default ''. It will see as "¡Hola!"
+To personalize as much as possible, we will use the tag {city} to show users that
+we care about presenting them with the best personalised offers for them.
+
+{% endcomment %}
