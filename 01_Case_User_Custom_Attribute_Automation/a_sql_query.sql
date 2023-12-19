@@ -8,5 +8,5 @@ FROM
 WHERE
     user_country_code = 'ES'
     AND preferred_city_code != 'BCN'
-    AND last_qc_order_date >= CURRENT_DATE - INTERVAL '180 days'
+    AND last_qc_order_date >= CURRENT_DATE - INTERVAL '30 days'
     AND total_groceries_orders > 2;
